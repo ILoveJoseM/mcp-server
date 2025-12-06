@@ -28,10 +28,15 @@ class McpServerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // 合并配置文件
-        $this->mergeConfigFrom(
-            config_path('mcp.php'), 'mcp'
-        );
+        if(is_file(config_path('mcp.php'))){
+            // 合并配置文件
+            $this->mergeConfigFrom(
+                config_path('mcp.php'), 'mcp'
+            );
+        } else {
+            $this->mergeConfigFrom(__DIR__ . '/../../config/mcp.php', 'mcp');
+        }
+
 
         // 注册工具管理器为单例
         $this->app->singleton(ToolsManager::class, function ($app) {
