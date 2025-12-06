@@ -32,7 +32,7 @@ class PromptsManager
      */
     public function __construct(?string $promptsDirectory = null)
     {
-        $this->promptsDirectory = $promptsDirectory ?? config('mcp.prompts_directory', storage_path('mcp_prompts'));
+        $this->promptsDirectory = $promptsDirectory ?? config('mcp-server.prompts_directory', storage_path('mcp_prompts'));
     }
 
     /**

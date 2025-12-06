@@ -39,13 +39,13 @@ class InitializeStrategy extends AbstractMcpMethodStrategy
 
         // 构建服务器信息
         $serverInfo = [
-            'name' => config('mcp.server.name'),
-            'version' => config('mcp.server.version'),
+            'name' => config('mcp-server.server.name'),
+            'version' => config('mcp-server.server.version'),
         ];
 
         // 返回成功响应
         return $this->successResponse($id, [
-            'protocolVersion' => config('mcp.protocol_version'),
+            'protocolVersion' => config('mcp-server.protocol_version'),
             'capabilities' => $capabilities,
             'serverInfo' => $serverInfo,
         ]);
@@ -79,7 +79,7 @@ class InitializeStrategy extends AbstractMcpMethodStrategy
      */
     protected function buildCapabilities(): array
     {
-        $config = config('mcp.capabilities', []);
+        $config = config('mcp-server.capabilities', []);
         $capabilities = [];
 
         // Resources capability

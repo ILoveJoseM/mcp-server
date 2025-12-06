@@ -31,7 +31,7 @@ class ResourcesTemplatesListStrategy extends AbstractMcpMethodStrategy
     public function handle(array $params, $id): array
     {
         try {
-            $resourceDirectory = config('mcp.resource_directory');
+            $resourceDirectory = config('mcp-server.resource_directory');
 
             Log::info('MCP resources/templates/list request');
 

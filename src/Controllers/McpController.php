@@ -82,7 +82,7 @@ class McpController extends Controller
     {
         $response = new StreamedResponse(function () {
             // 设置 SSE 头部
-            echo "retry: " . config('mcp.sse.retry', 3000) . "\n\n";
+            echo "retry: " . config('mcp-server.sse.retry', 3000) . "\n\n";
 
             // 发送连接成功消息
             echo "event: connected\n";
@@ -97,7 +97,7 @@ class McpController extends Controller
             flush();
 
             // 保持连接
-            $timeout = config('mcp.sse.timeout', 30);
+            $timeout = config('mcp-server.sse.timeout', 30);
             $startTime = time();
 
             while (time() - $startTime < $timeout) {

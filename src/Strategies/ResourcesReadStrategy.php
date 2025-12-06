@@ -45,7 +45,7 @@ class ResourcesReadStrategy extends AbstractMcpMethodStrategy
             }
 
             // 构建完整路径
-            $resourceDirectory = config('mcp.resource_directory');
+            $resourceDirectory = config('mcp-server.resource_directory');
             $fullPath = $resourceDirectory . DIRECTORY_SEPARATOR . $filePath;
 
             // 安全检查: 确保路径在资源目录内

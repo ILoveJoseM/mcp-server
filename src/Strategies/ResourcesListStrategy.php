@@ -31,7 +31,7 @@ class ResourcesListStrategy extends AbstractMcpMethodStrategy
     public function handle(array $params, $id): array
     {
         try {
-            $resourceDirectory = config('mcp.resource_directory');
+            $resourceDirectory = config('mcp-server.resource_directory');
 
             Log::info('MCP resources/list request', [
                 'directory' => $resourceDirectory,
@@ -123,7 +123,7 @@ class ResourcesListStrategy extends AbstractMcpMethodStrategy
      */
     protected function buildFileResource($file): array
     {
-        $resourceDirectory = config('mcp.resource_directory');
+        $resourceDirectory = config('mcp-server.resource_directory');
 
         // 获取相对路径
         $relativePath = str_replace($resourceDirectory . DIRECTORY_SEPARATOR, '', $file->getPathname());
@@ -160,7 +160,7 @@ class ResourcesListStrategy extends AbstractMcpMethodStrategy
      */
     protected function buildDirectoryResource(string $directory): array
     {
-        $resourceDirectory = config('mcp.resource_directory');
+        $resourceDirectory = config('mcp-server.resource_directory');
 
         // 获取相对路径
         $relativePath = str_replace($resourceDirectory . DIRECTORY_SEPARATOR, '', $directory);

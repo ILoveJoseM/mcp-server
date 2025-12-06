@@ -28,13 +28,13 @@ class McpServerServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if(is_file(config_path('mcp.php'))){
+        if(is_file(config_path('mcp-server.php'))){
             // 合并配置文件
             $this->mergeConfigFrom(
-                config_path('mcp.php'), 'mcp'
+                config_path('mcp-server.php'), 'mcp-server'
             );
         } else {
-            $this->mergeConfigFrom(__DIR__ . '/../../config/mcp.php', 'mcp');
+            $this->mergeConfigFrom(__DIR__ . '/../../config/mcp-server.php', 'mcp-server');
         }
 
 
@@ -43,7 +43,7 @@ class McpServerServiceProvider extends ServiceProvider
             $manager = new ToolsManager();
 
             // 从配置文件中读取工具类并注册
-            $toolClasses = config('mcp.tools', []);
+            $toolClasses = config('mcp-server.tools', []);
             foreach ($toolClasses as $toolClass) {
                 try {
                     $manager->registerToolClass($toolClass);
@@ -119,7 +119,7 @@ class McpServerServiceProvider extends ServiceProvider
      */
     protected function registerRoutes()
     {
-        $config = config('mcp.route', []);
+        $config = config('mcp-server.route', []);
 
         Route::prefix($config['prefix'] ?? 'mcp')
             ->middleware($config['middleware'] ?? ['api'])
